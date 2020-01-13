@@ -17,19 +17,31 @@ namespace LocalNotificationsSample
 
         protected override async void OnStart()
         {
-            await SchedueLocalNotification(DateTimeOffset.UtcNow.AddSeconds(5));
+            await SendNotificationNow();
+            await ScheduleLocalNotification(DateTimeOffset.UtcNow.AddMinutes(1));
         }
 
-        Task SchedueLocalNotification(in DateTimeOffset scheduledTime)
+        Task SendNotificationNow()
         {
             var notification = new Notification
             {
                 Title = "Testing Local Notifications",
                 Message = "It's working",
-                ScheduleDate = scheduledTime
             };
 
-            return ShinyHost.Resolve<INotificationManager>().Send(notification);
+            return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
+        }
+
+        Task ScheduleLocalNotification(in DateTimeOffset scheduledDate)
+        {
+            var notification = new Notification
+            {
+                Title = "Testing Local Notifications",
+                Message = "It's working",
+                ScheduleDate = scheduledDate,
+            };
+
+            return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
         }
     }
 }

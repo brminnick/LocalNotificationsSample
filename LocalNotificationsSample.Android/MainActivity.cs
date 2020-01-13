@@ -1,7 +1,10 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Shiny;
+using Shiny.Notifications;
 
 namespace LocalNotificationsSample.Droid
 {
@@ -26,6 +29,12 @@ namespace LocalNotificationsSample.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+        }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+            Shiny.Notifications.NotificationManager.TryProcessIntent(intent);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace LocalNotificationsSample.Droid
         {
             base.OnCreate();
             AndroidShinyHost.Init(this, platformBuild: services => services.UseNotifications());
-            Shiny.Notifications.AndroidOptions.DefaultSmallIconResourceName = "icon.png";
+            Shiny.Notifications.AndroidOptions.DefaultSmallIconResourceName = "icon";
         }
     }
 }
