@@ -32,13 +32,13 @@ namespace LocalNotificationsSample
             return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
         }
 
-        Task ScheduleLocalNotification(in DateTimeOffset scheduledDate)
+        Task ScheduleLocalNotification(in DateTimeOffset scheduleDate)
         {
             var notification = new Notification
             {
                 Title = "Testing Local Notifications",
                 Message = "It's working",
-                ScheduleDate = scheduledDate,
+                ScheduleDate = scheduleDate,
             };
 
             return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
