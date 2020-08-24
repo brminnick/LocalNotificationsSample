@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Runtime;
 using Shiny;
+using Shiny.Notifications;
 
 namespace LocalNotificationsSample.Droid
 {
@@ -16,8 +17,11 @@ namespace LocalNotificationsSample.Droid
         {
             base.OnCreate();
 
+            AndroidOptions.DefaultSmallIconResourceName = "icon";
+            AndroidOptions.DefaultLaunchActivityFlags = AndroidActivityFlags.FromBackground;
+            AndroidOptions.DefaultNotificationImportance = AndroidNotificationImportance.High;
+            //AndroidOptions.AutoCancel = false;
             AndroidShinyHost.Init(this, platformBuild: services => services.UseNotifications());
-            Shiny.Notifications.AndroidOptions.DefaultSmallIconResourceName = "icon";
         }
     }
 }

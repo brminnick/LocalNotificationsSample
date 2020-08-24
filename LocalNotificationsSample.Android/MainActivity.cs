@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Shiny;
 
 namespace LocalNotificationsSample.Droid
 {
@@ -12,7 +13,7 @@ namespace LocalNotificationsSample.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            Shiny.AndroidShinyHost.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            AndroidShinyHost.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
@@ -32,7 +33,7 @@ namespace LocalNotificationsSample.Droid
         protected override void OnNewIntent(Intent intent)
         {
             base.OnNewIntent(intent);
-            Shiny.Notifications.NotificationManager.TryProcessIntent(intent);
+            this.ShinyOnNewIntent(intent);
         }
     }
 }

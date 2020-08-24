@@ -18,14 +18,14 @@ namespace LocalNotificationsSample
         protected override async void OnStart()
         {
             await SendNotificationNow();
-            await ScheduleLocalNotification(DateTimeOffset.UtcNow.AddMinutes(1));
+            await ScheduleLocalNotification(DateTimeOffset.UtcNow.AddSeconds(2));
         }
 
         Task SendNotificationNow()
         {
             var notification = new Notification
             {
-                Title = "Testing Local Notifications",
+                Title = "Testing Immediate Local Notifications",
                 Message = "It's working",
             };
 
@@ -36,8 +36,8 @@ namespace LocalNotificationsSample
         {
             var notification = new Notification
             {
-                Title = "Testing Local Notifications",
-                Message = "It's working",
+                Title = "Testing Scheduled Local Notifications",
+                Message = $"Scheduled for {scheduleDate}",
                 ScheduleDate = scheduleDate,
             };
 

@@ -122,16 +122,16 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.187-pre2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.4.0-pre2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Shiny.Notifications">
-      <Version>1.0.0.1182</Version>
+      <Version>1.2.0.1755</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\LocalNotificationsSample\LocalNotificationsSample.csproj">
-      <Project>{EE43C2D2-0E7B-47DF-8EEC-5A4A2051D19E}</Project>
+      <Project>{9A7BCF75-7A9B-41F3-96FE-E5E411C21805}</Project>
       <Name>LocalNotificationsSample</Name>
     </ProjectReference>
   </ItemGroup>
