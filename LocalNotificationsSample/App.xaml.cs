@@ -21,7 +21,7 @@ namespace LocalNotificationsSample
             await ScheduleLocalNotification(DateTimeOffset.UtcNow.AddSeconds(2));
         }
 
-        Task SendNotificationNow()
+        async Task SendNotificationNow()
         {
             var notification = new Notification
             {
@@ -29,10 +29,12 @@ namespace LocalNotificationsSample
                 Message = "It's working",
             };
 
-            return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
+            var accessStatus = await ShinyHost.Resolve<INotificationManager>().RequestAccess();
+            if (accessStatus is AccessState.Available)
+                await ShinyHost.Resolve<INotificationManager>().Send(notification);
         }
 
-        Task ScheduleLocalNotification(in DateTimeOffset scheduleDate)
+        async Task ScheduleLocalNotification(DateTimeOffset scheduleDate)
         {
             var notification = new Notification
             {
@@ -41,7 +43,9 @@ namespace LocalNotificationsSample
                 ScheduleDate = scheduleDate,
             };
 
-            return ShinyHost.Resolve<INotificationManager>().RequestAccessAndSend(notification);
+            var accessStatus = await ShinyHost.Resolve<INotificationManager>().RequestAccess();
+            if (accessStatus is AccessState.Available)
+                await ShinyHost.Resolve<INotificationManager>().Send(notification);
         }
     }
 }

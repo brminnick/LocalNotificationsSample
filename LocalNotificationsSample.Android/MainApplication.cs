@@ -15,13 +15,11 @@ namespace LocalNotificationsSample.Droid
 
         public override void OnCreate()
         {
+            this.ShinyOnCreate(new AppShinyStartup());
             base.OnCreate();
 
             AndroidOptions.DefaultSmallIconResourceName = "icon";
             AndroidOptions.DefaultLaunchActivityFlags = AndroidActivityFlags.FromBackground;
-            AndroidOptions.DefaultNotificationImportance = AndroidNotificationImportance.High;
-            //AndroidOptions.AutoCancel = false;
-            AndroidShinyHost.Init(this, platformBuild: services => services.UseNotifications());
         }
     }
 }
