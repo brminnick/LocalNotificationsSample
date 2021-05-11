@@ -15,7 +15,7 @@ namespace LocalNotificationsSample.Droid
 
         public override void OnCreate()
         {
-            this.ShinyOnCreate(new AppShinyStartup());
+            this.ShinyOnCreate(new ShinyStartup());
             base.OnCreate();
 
             AndroidOptions.DefaultSmallIconResourceName = "icon";

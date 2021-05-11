@@ -9,7 +9,7 @@ namespace LocalNotificationsSample.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            this.ShinyFinishedLaunching(new AppShinyStartup());
+            this.ShinyFinishedLaunching(new ShinyStartup());
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
